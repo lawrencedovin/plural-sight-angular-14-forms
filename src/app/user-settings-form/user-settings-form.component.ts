@@ -22,6 +22,8 @@ export class UserSettingsFormComponent implements OnInit {
   userSettings: UserSettings = { ...this.originalUserSettings };
   postError = false;
   postErrorMessage = '';
+  singleModel = 'On';
+  dateRange: Date;
   subscriptionTypes: Observable<string[]>;
 
   ngOnInit() {
