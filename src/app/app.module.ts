@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,8 +13,8 @@ import { UserSettingsFormComponent } from './user-settings-form/user-settings-fo
   ],
   imports: [
     BrowserModule,
-    CommonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@
         #nameField="ngModel"
         required
         [class.field-error]="form.submitted && nameField.invalid"
+        (blur)="onBlur(nameField)"
       >
       <div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
         Enter a name
@@ -47,15 +48,19 @@
     <div class="form-group">
       <label for="subscriptionType">Subscription Type</label>
       <select class="form-control" name="subscriptionType" id="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
-        <option>Monthly</option>
-        <option>Annual</option>
-        <option>Lifetime</option>
+        <option *ngFor="let type of subscriptionTypes | async">
+          {{ type }}
+        </option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="notes">Notes</label>
       <textarea class="form-control" name="notes" id="notes" rows="3" [(ngModel)]="userSettings.notes"></textarea>
+    </div>
+
+    <div [hidden]="!postError" class="alert alert-danger">
+      {{ postErrorMessage }}
     </div>
 
     <button class="btn btn-primary">Send</button>
