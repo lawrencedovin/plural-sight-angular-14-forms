@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class UserSettingsFormComponent implements OnInit {
   private dataService = inject(DataService);
+  dateRange: Date;
   originalUserSettings: UserSettings = {
     name: '',
     emailOffers: true,
@@ -23,11 +24,13 @@ export class UserSettingsFormComponent implements OnInit {
   postError = false;
   postErrorMessage = '';
   singleModel = 'On';
-  dateRange: Date;
   subscriptionTypes: Observable<string[]>;
+  startTime: Date;
 
   ngOnInit() {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+    this.dateRange = new Date();
+    this.startTime = new Date();
   }
 
   onBlur(field: NgModel) {
